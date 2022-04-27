@@ -3,6 +3,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <conio.h>
+#include <errno.h>
 
 
 int main(int argc, char *argv[]) {
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
     printf("Configuring remote address...\n");
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
-    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_socktype = SOCK_DGRAM;
     struct addrinfo *peer_address;
     if(getaddrinfo(argv[1], argv[2], &hints, &peer_address)) {
         fprintf(stderr, "getaddrinfo() failed. (%d)\n", WSAGetLastError());
@@ -40,12 +41,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    printf("Connecting");
-    if(connect(socket_peer, peer_address->ai_addr, peer_address->ai_addrlen)) {
-        fprintf(stderr, "connect() failed. (%d)\n", WSAGetLastError());
-        return 1;
-    }
-    freeaddrinfo(peer_address);
+
 
     printf("Connected.\n");
     printf("Online shopping application. Select an action \n");
@@ -63,22 +59,27 @@ int main(int argc, char *argv[]) {
         }
         if(FD_ISSET(socket_peer, &reads)) {
             char read[4096];
-            int bytes_received = recv(socket_peer, read, 4096, 0);
-            if(bytes_received < 1) {
-                printf("Connection closed by peer. \n");
-                break;
-            }
+
+            int bytes_received = recvfrom(socket_peer, read, 4096, 0, peer_address->ai_addr, (int*)&peer_address->ai_addrlen);
+
             printf("Received (%d bytes)\n", bytes_received);
             printf("%.*s\n", bytes_received, read);
+            if(bytes_received < 0) {
+                printf("Error occurred: %d\n", WSAGetLastError());
+                return 1;
+            }
+
+
         }
         if(_kbhit()) {
-            char read[4096];
-            if(!fgets(read, 4096, stdin)) break;
+            char read[512];
+            if(!fgets(read, 512, stdin)) break;
             printf("Sending: %s", read);
-            int bytes_sent = send(socket_peer, read, strlen(read), 0);
+            int bytes_sent = sendto(socket_peer, read, 512, 0, peer_address->ai_addr, peer_address->ai_addrlen);
             printf("Sent %d bytes.\n", bytes_sent);
         }
     }
+    freeaddrinfo(peer_address);
     printf("Closing socket...\n");
     closesocket(socket_peer);
     WSACleanup();

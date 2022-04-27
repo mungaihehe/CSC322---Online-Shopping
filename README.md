@@ -8,8 +8,8 @@ Programmed in the C programming language
 - [ ] Youtube Code - Client/Server
 - [x] Client/Server - same machine
 - [x] Client/Server - different machines
-- [x] Connection oriented - TCP
-- [ ] Connectionless oriented - UDP
+- [ ] Connection oriented - TCP
+- [x] Connectionless oriented - UDP
 - [ ] Multiple Clients - Threads
 - [ ] Multiple Clients - Processes
 - [ ] Multiple Clients - Synchronous Method
