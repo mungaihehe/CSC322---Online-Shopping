@@ -4,15 +4,15 @@ Programmed in the C programming language
 
 # Versions Satisfied
 
-- [] Monolith
-- [] Youtube Code - Client/Server
+- [ ] Monolith
+- [ ] Youtube Code - Client/Server
 - [x] Client/Server - same machine
 - [x] Client/Server - different machines
 - [x] Connection oriented - TCP
-- [] Connectionless oriented - UDP
-- [] Multiple Clients - Threads
-- [] Multiple Clients - Processes
-- [] Multiple Clients - Synchronous Method
+- [ ] Connectionless oriented - UDP
+- [ ] Multiple Clients - Threads
+- [ ] Multiple Clients - Processes
+- [ ] Multiple Clients - Synchronous Method
 
 ## Provides the following services
 
