@@ -1,6 +1,6 @@
 #ifndef PRODUCT_H_INCLUDED
 #define PRODUCT_H_INCLUDED
-
+#include <string.h>
 struct Product {
     char name[20];
     int price;

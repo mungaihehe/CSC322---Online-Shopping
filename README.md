@@ -1,4 +1,4 @@
-# Online shopping application - CSC 322
+# Online shopping application - CSC 322 - Version 3 (Separate client/server)
 
 Programmed in the C programming language
 
@@ -16,4 +16,5 @@ Programmed in the C programming language
 ## How to run
 
 1. Clone the repository
-2. Build and run main.c - the code does not require any external dependencies
+2. Build and run main.c - the code does not require any external dependencies (server-side code)
+3. Build and run client.c (client-side code)

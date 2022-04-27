@@ -50,9 +50,16 @@ struct CatalogItem* searchCatalog(struct Product product, struct Catalog catalog
 //returns change as Payment
 struct Payment purchaseItem(struct Product product, struct Payment payment, struct Catalog* catalog) {
     struct CatalogItem* item = searchCatalog(product, *catalog);
-    if(item->stock == 0) return payment;
-    else if(item->product->price > payment.amount) return payment;
+    if(item->stock == 0) {
+        printf("Item not in stock.\n");
+        return payment;
+    }
+    else if(item->product->price > payment.amount) {
+        printf("Payment insufficient.\n");
+        return payment;
+    }
     else {
+        printf("Payment successful.\n");
         item->stock--;
         struct Payment change;
         change.amount = payment.amount - item->product->price;
