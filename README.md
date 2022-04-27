@@ -1,6 +1,18 @@
-# Online shopping application - CSC 322 - Version 3 (Separate client/server)
+# Online shopping application - CSC 322
 
 Programmed in the C programming language
+
+# Versions Satisfied
+
+- [] Monolith
+- [] Youtube Code - Client/Server
+- [x] Client/Server - same machine
+- [x] Client/Server - different machines
+- [x] Connection oriented - TCP
+- [] Connectionless oriented - UDP
+- [] Multiple Clients - Threads
+- [] Multiple Clients - Processes
+- [] Multiple Clients - Synchronous Method
 
 ## Provides the following services
 
