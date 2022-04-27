@@ -2,6 +2,18 @@
 
 Programmed in the C programming language
 
+# Versions Satisfied
+
+- [x] Monolith
+- [] Youtube Code - Client/Server
+- [] Client/Server - same machine
+- [] Client/Server - different machines
+- [] Connection oriented - TCP
+- [] Connectionless oriented - UDP
+- [] Multiple Clients - Threads
+- [] Multiple Clients - Processes
+- [] Multiple Clients - Synchronous Method
+
 ## Provides the following services
 
 1. Display catalog
