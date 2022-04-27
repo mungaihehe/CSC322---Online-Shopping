@@ -13,8 +13,26 @@ Programmed in the C programming language
 
 ![UML diagram](design.jpg)
 
-## How to run
+## How to build
 
 1. Clone the repository
 2. Build and run main.c - the code does not require any external dependencies (server-side code)
+   `gcc main.c -o main.exe -lws2_32`
 3. Build and run client.c (client-side code)
+   `gcc client.c -o client.exe -lws_32`
+
+## Usage
+
+### Client
+
+`client.exe [hostname] [port]`
+
+#### Example
+
+`client.exe 127.0.0.1 8080`
+
+### Server
+
+Runs on port 8080
+
+`main.exe`
