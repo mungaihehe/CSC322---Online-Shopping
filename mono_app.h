@@ -4,12 +4,13 @@
 #include <stdlib.h>
 #include "product.h"
 #include "catalog.h"
+#include "catalogio.h"
 
 void mono_app(struct Catalog* catalog) {
     int exit = 0;
     while(exit != 1) {
         printf("Online shopping application. Select an action \n");
-        printf(" 1 - Add Product \n 2 - Search Catalog \n 3 - Display catalog \n 4 - Catalog size \n 5 - Purchase Item (make payment) \n 6 - Exit \n");
+        printf(" 1 - Add Product \n 2 - Search Catalog \n 3 - Display catalog \n 4 - Catalog size \n 5 - Purchase Item (make payment) \n 6 - Exit \n 7 - Persist To File \n 8 - Load From File \n");
         int action = -1;
         scanf("%d", &action);
 
@@ -77,6 +78,22 @@ void mono_app(struct Catalog* catalog) {
         case 6:
             exit = 1;
             break;
+        case 7: ; {
+            printf("Enter file path: ");
+            char filepath[50];
+            scanf("%s", filepath);
+            persistCatalog(*catalog, filepath);
+            printf("Catalog persisted successfully.\n");
+            break;
+        }
+        case 8: ; {
+            printf("Enter file path: ");
+            char filepath[50];
+            scanf("%s", filepath);
+            hydrateCatalog(filepath, catalog);
+            printf("Catalog hydrated successfully.\n");
+            break;
+        }
         default:
             printf("Invalid selection");
             break;
